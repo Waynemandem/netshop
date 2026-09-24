@@ -36,19 +36,36 @@ function Checkout() {
     }
   }
 
-  if (success) {
-    return (
-      <div className="max-w-md mx-auto px-4 py-16 text-center">
-        <h2 className="text-xl font-semibold text-gray-900">Order received 🎉</h2>
-        <p className="text-gray-600 mt-2">
-          {paymentMethod === 'transfer'
-            ? 'Please send payment confirmation via WhatsApp to complete your order.'
-            : "We'll contact you shortly to confirm delivery."}
-        </p>
-      </div>
-    )
-  }
+ if (success) {
+  const whatsappNumber = '2349078740445' // replace with your actual WhatsApp business number, no + or leading 0
+  const message = `Hi, I just placed an order on Netshop.
+Total: ₦${total.toLocaleString()}
+Payment: ${paymentMethod === 'transfer' ? 'Bank Transfer' : 'Cash on Delivery'}
+I'll send payment confirmation here.`
 
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
+
+  return (
+    <div className="max-w-md mx-auto px-4 py-16 text-center">
+      <h2 className="text-xl font-semibold text-gray-900">Order received 🎉</h2>
+      <p className="text-gray-600 mt-2">
+        {paymentMethod === 'transfer'
+          ? 'Send your payment confirmation via WhatsApp to complete your order.'
+          : "We'll contact you shortly to confirm delivery."}
+      </p>
+      {paymentMethod === 'transfer' && (
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-5 bg-green-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors"
+        >
+          Confirm via WhatsApp
+        </a>
+      )}
+    </div>
+  )
+}
   if (cart.length === 0) {
     return <div className="max-w-md mx-auto px-4 py-10 text-center text-gray-500">Your cart is empty.</div>
   }

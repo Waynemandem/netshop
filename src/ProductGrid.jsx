@@ -21,39 +21,71 @@ function ProductGrid() {
     fetchProducts()
   }, [])
 
-  if (loading) return <div className="text-center py-20 text-gray-500">Loading...</div>
-  if (error) return <div className="text-center py-20 text-red-500">Error: {error}</div>
+  if (loading)
+    return (
+      <div className="min-h-screen bg-[#241419] flex items-center justify-center text-[#F5EDE6]/50 text-sm tracking-wide">
+        loading
+      </div>
+    )
+  if (error)
+    return (
+      <div className="min-h-screen bg-[#241419] flex items-center justify-center text-[#B8574E] text-sm">
+        {error}
+      </div>
+    )
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
-      <h1 className="text-2xl font-semibold mb-6 text-gray-900">Trending Now</h1>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+    <div className="min-h-screen bg-[#241419]">
+      <header className="px-6 pt-14 pb-10 max-w-5xl mx-auto">
+        <h1
+          className="text-[#F5EDE6] text-4xl md:text-5xl"
+          style={{ fontFamily: "'Fraunces', Georgia, serif" }}
+        >
+          Netshop
+        </h1>
+        <p className="text-[#C9A876] mt-2 text-sm tracking-wide">
+          Discreet delivery, Lagos & Ogun
+        </p>
+      </header>
+
+      <div className="max-w-5xl mx-auto px-6 pb-20 grid grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-10">
         {products.map((product) => (
-          <div
-            key={product.id}
-            className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
-          >
-            <div className="aspect-square bg-gray-100 overflow-hidden">
+          <div key={product.id} className="group">
+            <div className="relative aspect-[3/4] bg-[#3A2530] overflow-hidden">
               <img
                 src={product.images}
                 alt={product.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
               />
-            </div>
-            <div className="p-3">
               {product.is_trending && (
-                <span className="inline-block text-xs font-medium text-orange-600 bg-orange-50 px-2 py-0.5 rounded-full mb-1">
-                  🔥 Trending
+                <span
+                  className="absolute top-3 left-3 text-[10px] tracking-wide text-[#241419] bg-[#C9A876] px-2 py-1"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
+                >
+                  trending
                 </span>
               )}
-              <h3 className="text-sm font-medium text-gray-900 truncate">{product.name}</h3>
-              <p className="text-sm font-semibold text-gray-900 mt-1">₦{Number(product.price).toLocaleString()}</p>
-              <button
-                onClick={() => addToCart(product)}
-                className="mt-2 w-full bg-gray-900 text-white text-sm py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+            </div>
+
+            <div className="mt-3">
+              <h3
+                className="text-[#F5EDE6] text-lg leading-tight"
+                style={{ fontFamily: "'Fraunces', Georgia, serif" }}
               >
-                Add to Cart
-              </button>
+                {product.name}
+              </h3>
+              <div className="flex items-center justify-between mt-2">
+                <p className="text-[#C9A876] text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  ₦{Number(product.price).toLocaleString()}
+                </p>
+                <button
+                  onClick={() => addToCart(product)}
+                  className="text-[#F5EDE6] text-xs border border-[#F5EDE6]/30 px-3 py-1.5 hover:bg-[#B8574E] hover:border-[#B8574E] transition-colors"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
+                >
+                  Add
+                </button>
+              </div>
             </div>
           </div>
         ))}
