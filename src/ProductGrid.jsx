@@ -36,17 +36,6 @@ function ProductGrid() {
 
   return (
     <div className="min-h-screen bg-[#241419]">
-      <header className="px-6 pt-14 pb-10 max-w-5xl mx-auto">
-        <h1
-          className="text-[#F5EDE6] text-4xl md:text-5xl"
-          style={{ fontFamily: "'Fraunces', Georgia, serif" }}
-        >
-          Netshop
-        </h1>
-        <p className="text-[#C9A876] mt-2 text-sm tracking-wide">
-          Discreet delivery, Lagos & Ogun
-        </p>
-      </header>
 
       <div className="max-w-5xl mx-auto px-6 pb-20 grid grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-10">
         {products.map((product) => (
