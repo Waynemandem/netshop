@@ -1,29 +1,30 @@
 import { useState } from 'react'
-import { useCart } from './CartContext'
+import { useCart } from './useCart'
 
-function Nav({ onOpenCart }) {
+function Nav({ onOpenCart, searchTerm, onSearchChange, onFilterChange, onOpenAbout }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const { cart } = useCart()
   const itemCount = cart.reduce((sum, item) => sum + item.qty, 0)
 
-  const links = ['Home', 'Trending', 'Categories', 'About']
-
   return (
     <>
       <nav className="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
-        <span
+        <button
+          onClick={() => onFilterChange('all')}
           className="text-[#F5EDE6] text-xl"
           style={{ fontFamily: "'Fraunces', Georgia, serif" }}
         >
           Netshop
-        </span>
+        </button>
 
         <div className="flex items-center gap-4">
           {searchOpen ? (
             <input
               autoFocus
-              onBlur={() => setSearchOpen(false)}
+              value={searchTerm}
+              onChange={(e) => onSearchChange(e.target.value)}
+              onBlur={() => !searchTerm && setSearchOpen(false)}
               placeholder="Search..."
               className="bg-transparent border-b border-[#F5EDE6]/30 text-[#F5EDE6] text-sm px-1 py-1 outline-none w-32 sm:w-48"
               style={{ fontFamily: "'Inter', sans-serif" }}
@@ -62,16 +63,33 @@ function Nav({ onOpenCart }) {
             >
               close
             </button>
-            {links.map((link) => (
-              <a
-                key={link}
-                href="#"
-                className="text-[#F5EDE6] text-2xl"
-                style={{ fontFamily: "'Fraunces', Georgia, serif" }}
-              >
-                {link}
-              </a>
-            ))}
+            <button
+              onClick={() => {
+                onFilterChange('all')
+                setMenuOpen(false)
+              }}
+              className="text-left text-[#F5EDE6] text-2xl"
+              style={{ fontFamily: "'Fraunces', Georgia, serif" }}
+            >
+              Home
+            </button>
+            <button
+              onClick={() => {
+                onFilterChange('trending')
+                setMenuOpen(false)
+              }}
+              className="text-left text-[#F5EDE6] text-2xl"
+              style={{ fontFamily: "'Fraunces', Georgia, serif" }}
+            >
+              Trending
+            </button>
+            <a
+              href="#"
+              className="text-[#F5EDE6] text-2xl"
+              style={{ fontFamily: "'Fraunces', Georgia, serif" }}
+            >
+              About
+            </a>
             <button
               onClick={() => {
                 setMenuOpen(false)
