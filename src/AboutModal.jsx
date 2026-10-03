@@ -3,38 +3,38 @@ function AboutModal({ open, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center px-6"
+      className="about-modal fixed inset-0 z-50 flex items-center justify-center px-6"
       onClick={onClose}
     >
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="modal-overlay absolute inset-0 bg-black/60" />
       <div
-        className="relative bg-[#241419] border border-[#F5EDE6]/10 max-w-md w-full p-8"
+        className="about-card glass-panel relative max-w-md w-full p-8"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-[#F5EDE6]/50 text-sm"
-          style={{ fontFamily: "'Inter', sans-serif" }}
+          className="modal-close absolute top-4 right-4 text-sm"
+          style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
         >
-          close
+          Close
         </button>
         <h2
-          className="text-[#F5EDE6] text-2xl mb-4"
-          style={{ fontFamily: "'Fraunces', Georgia, serif" }}
+          className="about-title text-2xl mb-4"
+          style={{ fontFamily: "'Inter', system-ui, sans-serif", fontWeight: 700 }}
         >
           About Netshop
         </h2>
         <p
-          className="text-[#F5EDE6]/70 text-sm leading-relaxed"
-          style={{ fontFamily: "'Inter', sans-serif" }}
+          className="about-copy text-sm leading-relaxed"
+          style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
         >
           Netshop is a Lagos-based storefront built for people who want the hottest
           items delivered fast, discreetly, and without fuss. We handle every order
           personally — no middlemen, no unmarked boxes going astray.
         </p>
         <p
-          className="text-[#F5EDE6]/50 text-xs mt-4"
-          style={{ fontFamily: "'Inter', sans-serif" }}
+          className="about-note text-xs mt-4"
+          style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
         >
           Questions before you order? Reach us directly on WhatsApp — link's in the footer.
         </p>

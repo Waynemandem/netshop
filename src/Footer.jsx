@@ -1,21 +1,19 @@
 function Footer() {
   return (
-    <footer className="border-t border-[#F5EDE6]/10 mt-4">
-      <div className="max-w-5xl mx-auto px-6 py-10 grid sm:grid-cols-3 gap-8">
+    <footer className="site-footer mt-4">
+      <div className="footer-inner max-w-5xl mx-auto px-6 py-10 grid sm:grid-cols-3 gap-8">
         <div>
-          <p className="text-[#F5EDE6] text-lg" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
-            Netshop
-          </p>
-          <p className="text-[#F5EDE6]/50 text-xs mt-2 leading-relaxed" style={{ fontFamily: "'Inter', sans-serif" }}>
+          <p className="footer-brand text-lg">Netshop</p>
+          <p className="footer-copy text-xs mt-2 leading-relaxed">
             Discreet, considered, delivered fast.
           </p>
         </div>
 
         <div>
-          <p className="text-[#C9A876] text-xs tracking-wide mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>
+          <p className="footer-label text-xs tracking-wide mb-2">
             Delivery
           </p>
-          <ul className="text-[#F5EDE6]/60 text-xs space-y-1" style={{ fontFamily: "'Inter', sans-serif" }}>
+          <ul className="footer-list text-xs space-y-1">
             <li>Lagos (Mainland/Island) — same day</li>
             <li>Lagos (Outer) — next day</li>
             <li>Ogun State — next day</li>
@@ -23,22 +21,21 @@ function Footer() {
         </div>
 
         <div>
-          <p className="text-[#C9A876] text-xs tracking-wide mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>
+          <p className="footer-label text-xs tracking-wide mb-2">
             Contact
           </p>
           <a
             href="https://wa.me/2349078740445"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#F5EDE6]/60 text-xs hover:text-[#F5EDE6] transition-colors"
-            style={{ fontFamily: "'Inter', sans-serif" }}
+            className="footer-link text-xs"
           >
             WhatsApp us
           </a>
         </div>
       </div>
-      <div className="max-w-5xl mx-auto px-6 pb-8">
-        <p className="text-[#F5EDE6]/30 text-[11px]" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div className="footer-bottom max-w-5xl mx-auto px-6 pb-8">
+        <p className="footer-fine text-[11px]">
           © {new Date().getFullYear()} Netshop. All orders discreetly packaged.
         </p>
       </div>
